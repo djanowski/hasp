@@ -1,6 +1,36 @@
 #!/usr/bin/env sh
 
-m4 -P -D__file="$1" css.m4 | \
-  # CSS minification from https://gist.github.com/dominicmartineau/5483359
+# CSS minification
+# Copyright (c) 2013 Dominic Martineau
+#
+# Source: https://gist.github.com/dominicmartineau/5483359
+minify() {
   sed -e 's/^[ \t]*//g; s/[ \t]*$//g; s/\([:{;,]\) /\1/g; s/ {/{/g; s/\/\*.*\*\///g; /^$/d' | \
   sed -e :a -e '$!N; s/\n\(.\)/\1/; ta'
+}
+
+m4 -P -D__file="$1" - << 'EOS' | minify
+m4_define(`set', `m4_define(`$1', `$2')')
+m4_define(`on', `m4_divert'($1)`__selector {')
+m4_define(`end', `}m4_divert(0)')
+m4_define(`selector', `m4_define(`__selector', '$1`) $1')
+
+m4_define(`__last_breakpoint', 0)
+
+m4_define(`breakpoint', `
+  m4_define(`__last_breakpoint', m4_incr(__last_breakpoint))
+  m4_define($1, __last_breakpoint)
+  m4_define(`__breakpoint_'$1`', `$2')
+')
+
+m4_include(__file)
+
+m4_define(`__print_breakpoints', `m4_ifdef(`__breakpoint_$1', `
+@media only screen and (__breakpoint_$1) {
+  m4_undivert($1)
+}
+__print_breakpoints(m4_incr($1))
+')')
+
+__print_breakpoints(1)
+EOS
