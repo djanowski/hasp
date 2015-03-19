@@ -1,0 +1,24 @@
+breakpoint(`TABLET', `min-device-width: 768px')
+breakpoint(`DESKTOP', `min-device-width: 900px')
+
+set(`PRIMARY_COLOR', `#f00')
+set(`SECONDARY_COLOR', `#ff0')
+
+body {
+  font-size: 2em;
+  color: PRIMARY_COLOR;
+}
+
+selector(section) {
+  background-color: SECONDARY_COLOR;
+
+  on(DESKTOP)
+    font-family: sans-serif;
+    width: 50%;
+  end
+
+  on(TABLET)
+    font-family: monospace;
+    width: 70%;
+  end
+}
