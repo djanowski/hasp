@@ -1,19 +1,13 @@
 #!/usr/bin/env sh
 
-# CSS minification
-# Copyright (c) 2013 Dominic Martineau
-#
-# Source: https://gist.github.com/dominicmartineau/5483359
-minify() {
-  sed -e 's/^[ \t]*//g; s/[ \t]*$//g; s/\([:{;,]\) /\1/g; s/ {/{/g; s/\/\*.*\*\///g; /^$/d' | \
-  sed -e :a -e '$!N; s/\n\(.\)/\1/; ta'
-}
+ENTRY=$1
 
-m4 -P -D__file="$1" - << 'EOS' | minify
+m4 -P -D__file="$ENTRY" -I "$(dirname "$ENTRY")" - << 'EOS'
 m4_define(`set', `m4_define(`$1', `$2')')
 m4_define(`on', `m4_divert'($1)`__selector {')
 m4_define(`end', `}m4_divert(0)')
 m4_define(`selector', `m4_define(`__selector', '$1`) $1')
+m4_define(`include', `m4_include('$1`)')
 
 m4_define(`__last_breakpoint', 0)
 
