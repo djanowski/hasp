@@ -3,11 +3,11 @@
 ENTRY=$1
 
 m4 -P -D__file="$ENTRY" -I "$(dirname "$ENTRY")" - << 'EOS'
-m4_define(`set', `m4_define(`$1', `$2')')
-m4_define(`on', `m4_divert'($1)`__selector {')
-m4_define(`end', `}m4_divert(0)')
-m4_define(`selector', `m4_define(`__selector', '$1`) $1')
-m4_define(`include', `m4_include('$1`)')
+m4_define(`set',      `m4_define(`$1', `$2')')
+m4_define(`on',       `m4_divert'($1)`__selector {')
+m4_define(`end',      `}m4_divert(0)')
+m4_define(`selector', `m4_define(`__selector', '$1`)$1')
+m4_define(`include',  `m4_include('$1`)')
 
 m4_define(`__last_breakpoint', 0)
 
