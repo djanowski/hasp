@@ -106,10 +106,11 @@ Who cares? Do you use XSLT to render your HTML templates?
 OK, should I use this in production?
 ------------------------------------
 
-Of course not!
+Yes, you can use it in production. If you do, please [let me know][djanowski].
 
-Apparently there are [better solutions][postcss] now (although they all still
-require Node.js, a huge dependency for this simple problem, in my opinion).
+If you're still not sold on the idea, and are using Less or Sass, make yourself
+a favor and [switch to something better][postcss]. Anyway, they all require
+Node.js, a huge dependency for this simple problem, in my opinion.
 
 
 What about minification?
@@ -146,7 +147,8 @@ Examples
 Check out the examples directory.
 
 
-[entr]:    http://entrproject.org
-[m4]:      http://www.gnu.org/software/m4/m4.html
-[postcss]: https://github.com/postcss/postcss
-[soveran]: https://twitter.com/soveran
+[djanowski]: https://twitter.com/djanowski
+[entr]:      http://entrproject.org
+[m4]:        http://www.gnu.org/software/m4/m4.html
+[postcss]:   https://github.com/postcss/postcss
+[soveran]:   https://twitter.com/soveran
