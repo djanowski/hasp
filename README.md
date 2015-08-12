@@ -24,6 +24,9 @@ file.
 [Michel][soveran] suggested I look at [M4][m4], a macro processor you already
 have on your system.
 
+The result is a 30-LOC minimal preprocessor. You know, "it's okay if it's
+half-assed as long as it's the right half of the ass".
+
 
 Usage
 -----
