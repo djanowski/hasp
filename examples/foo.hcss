@@ -1,8 +1,8 @@
-breakpoint(`TABLET', `min-device-width: 768px')
-breakpoint(`DESKTOP', `min-device-width: 900px')
+breakpoint(TABLET,  min-device-width: 768px)
+breakpoint(DESKTOP, min-device-width: 900px)
 
-set(`PRIMARY_COLOR', `#f00')
-set(`SECONDARY_COLOR', `#ff0')
+set(PRIMARY_COLOR,   `#f00')
+set(SECONDARY_COLOR, `#ff0')
 
 body {
   font-size: 2em;
