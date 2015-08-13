@@ -198,6 +198,25 @@ Example:
     }
 
 
+Installation
+------------
+
+Until Hasp becomes available in package managers, you can install it by copying
+`bin/hasp` somewhere in your `$PATH`:
+
+```
+$ wget https://raw.githubusercontent.com/djanowski/hasp/master/bin/hasp /usr/local/bin/hasp
+$ chmod +x /usr/local/bin/hasp
+```
+
+You should check that M4 is available on your system, but it most likely is:
+
+```
+$ which m4
+/usr/bin/m4
+```
+
+
 Examples
 --------
 
