@@ -141,6 +141,63 @@ $ while true; do find . -name '*.hcss' | entr -rd sh -c 'hasp styles.hcss'; done
 ```
 
 
+Syntax reference
+----------------
+
+**`set(<name>, <value>)`**
+
+Defines a variable. Per convention, variables names should be upper-case.
+
+Example:
+
+    set(BACKGROUND, white)
+
+    body {
+      background: BACKGROUND;
+    }
+
+
+**`include(<file>)`**
+
+Includes another Hasp file.
+
+Example:
+
+    body {
+      background: white;
+    }
+
+    include(path/to/other.hcss)
+
+
+**`breakpoint(<name>, <expression>)`**
+
+Defines a named breakpoint for later use.
+
+Example:
+
+    breakpoint(TABLET,  min-device-width: 768px)
+    breakpoint(DESKTOP, min-device-width: 900px)
+
+
+**`selector(<rule>)`**
+**`on(<breakpoint>)`**
+
+Declares a rule that will be affected by breakpoints.
+
+Example:
+
+    breakpoint(TABLET,  min-device-width: 768px)
+
+    selector(.main-content) {
+      width: 10rem;
+
+      on(TABLET)
+        width: 20rem;
+      end
+    }
+
+
 Examples
 --------
 
