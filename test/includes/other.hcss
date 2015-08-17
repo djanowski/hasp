@@ -1,0 +1,5 @@
+set(HEIGHT, 2rem)
+
+header {
+  height: HEIGHT;
+}

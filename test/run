@@ -1,0 +1,40 @@
+#!/usr/bin/env sh
+
+set -euo pipefail
+
+HASP=./bin/hasp
+
+function run_test() {
+  local directory=$1
+  local input
+
+  if [ -f "$directory/input.css" ]; then
+    input=$directory/input.css
+  else
+    input=$directory/input.hcss
+  fi
+
+  # For now, disregard blank lines.
+  $HASP $input | sed -e '/^ *$/d' > tmp/actual.css
+
+  sed -e '/^ *$/d' $directory/output.css > tmp/expected.css
+
+  local diff=$(diff -u tmp/expected.css tmp/actual.css)
+
+  if [ -z "$diff" ]; then
+    printf .
+  else
+    echo "$diff"
+    exit 1
+  fi
+}
+
+if [ ! -d tmp ]; then
+  mkdir tmp
+fi
+
+find test -type d -maxdepth 1 -mindepth 1 | while read directory; do
+  run_test $directory
+done
+
+printf '\nOK\n'

@@ -1,0 +1,26 @@
+breakpoint(TABLET,  min-device-width: 768px)
+breakpoint(DESKTOP, min-device-width: 900px)
+
+selector(.main) {
+  width: 100%;
+
+  on(TABLET)
+    width: 70%;
+  end
+
+  on(DESKTOP)
+    width: 50%;
+  end
+}
+
+selector(.sidebar) {
+  width: 100%;
+
+  on(TABLET)
+    width: 30%;
+  end
+
+  on(DESKTOP)
+    width: 20%;
+  end
+}

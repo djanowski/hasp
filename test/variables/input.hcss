@@ -1,0 +1,5 @@
+set(BACKGROUND_COLOR, white)
+
+body {
+  background-color: BACKGROUND_COLOR;
+}
