@@ -8,6 +8,7 @@ m4_define(`on',       `m4_divert'($1)`__selector {')
 m4_define(`end',      `}m4_divert(0)')
 m4_define(`selector', `m4_define(`__selector', '$1`)$1')
 m4_define(`include',  `m4_include('$1`)')
+m4_changecom(`/*', `*/')
 
 m4_define(`__last_breakpoint', 0)
 
